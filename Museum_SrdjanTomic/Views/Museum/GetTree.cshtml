@@ -1,0 +1,53 @@
+﻿
+@model Museum_SrdjanTomic.Models.Tree
+
+@{
+    ViewBag.Title = "GetTree";
+    var a = Model;
+}
+
+@section scripts{
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/app/Collection.js"></script>
+    <link href="~/Scripts/Custom.css" rel="stylesheet" />
+}
+
+
+<h2>Museum</h2>
+
+<div class="row jumbotron" style="margin-top: 20px">
+    <div class="col-md-4">
+        <input id="filter" /> <br />
+        <ul id="menu" class="navbar" style="margin-top: 20px">
+            <li>
+                <a href="#">@Model.Name</a>
+                <ul>
+                    @foreach (var item in Model.Collection)
+                    {
+                        <li>
+                            <a>@item.Name</a>
+                            <ul data-id="@item.Id">
+                                @foreach (var item2 in item.Collection)
+                                {
+                                    <li><a class="Send" data-id="@item2.Id">@item2.Name</a></li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-md-8 line" id="all-data" style="display: none;">
+        <div class="ml-20">
+            <img class="center" id="picture" />
+            <hr />
+            <button type="button" class="btn btn-primary pull-right" data-id="" id="edit">Edit</button>
+            <h3 class="mt-20" id="name"></h3>
+            <div id="description"></div>
+        </div>
+    </div>
+</div>

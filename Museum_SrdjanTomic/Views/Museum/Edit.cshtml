@@ -1,0 +1,49 @@
+﻿@model Museum_SrdjanTomic.Models.Collection.CollectionAtrubitus
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@section scripts{
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/app/Collection.js"></script>
+    <script src="~/Scripts/app/EditCollection.js"></script>
+    <link href="~/Scripts/Custom.css" rel="stylesheet" />
+}
+
+<h2>Edit art</h2>
+
+<div class="row jumbotron" style="margin-top: 20px">
+    <div class="col-md-6">
+        <div class="row">
+            <label class="ml-12">Title</label>
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.Name, htmlAttributes: new { style = "width: 300px; height: 30px;", @id = "name" })
+        </div>
+        <div>
+            <div class="row">
+                <label class="ml-12">Image URL</label>
+            </div>
+            @Html.TextAreaFor(m => m.Url, htmlAttributes: new { style = "width: 300px; height: 50px;", @id = "picture" })
+        </div>
+        <div>
+            <div class="row">
+                <label class="ml-12">Description</label>
+            </div>
+            @Html.TextAreaFor(m => m.Description, htmlAttributes: new { style = "width: 300px; height: 300px;", @id = "description" })
+        </div>
+        <button type="button" class="btn btn-primary" id="save" data-id="@Model.Id">Save</button>
+        <button type="button" class="btn btn-outline-secondary" id="preview">Preview</button>
+    </div>
+    <div class="col-md-6" id="all-data" style="display: none;">
+        <div class="ml-20">
+            <img class="center" id="picture-preview" />
+            <hr />
+            <h3 class="mt-20" id="name-preview"></h3>
+            <div id="description-preview"></div>
+        </div>
+    </div>
+</div>
